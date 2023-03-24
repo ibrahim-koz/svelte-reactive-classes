@@ -1,0 +1,28 @@
+{
+  "name": "svelte-reactive-classes",
+  "private": false,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "svelte": "^3.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.0.3",
+    "@tsconfig/svelte": "^3.0.0",
+    "svelte": "^3.55.1",
+    "svelte-check": "^2.10.3",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vite-plugin-dts": "^2.1.0"
+  }
+}
