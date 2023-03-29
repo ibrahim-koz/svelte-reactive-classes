@@ -8,16 +8,25 @@ const commands = Symbol('commands')
 
 type Command = (...args: unknown[]) => void;
 
-const emptySet = new Set();
+const emptySet = Object.freeze(new Set<string>());
 
-export function createReactiveInstanceOf<T, S extends unknown[]>(
+function collectCommandsNames(proto: unknown): Set<string> {
+    if (proto === null || proto === Object.prototype) {
+        return emptySet;
+    }
+    const currentCommands = (proto as Target<unknown>)[commands] ?? emptySet;
+    const parentCommands = collectCommandsNames(Object.getPrototypeOf(proto));
+    return new Set([...currentCommands, ...parentCommands]);
+}
+
+export function reactiveInstanceOf<T, S extends unknown[]>(
     constructor: new (...args: S) => T,
     ...args: S
 ): ReactiveInstance<T> {
     const instance = new constructor(...args);
     const store = writable(instance);
 
-    const commandsNames: Set<string> = constructor.prototype[commands] ?? emptySet;
+    const commandsNames: Set<string> = collectCommandsNames(constructor.prototype);
 
     const reactiveCommandOf = (command: Command) => {
         return (...args: unknown[]) => {
@@ -49,7 +58,7 @@ export function createReactiveInstanceOf<T, S extends unknown[]>(
 type Target<T> = T & { [commands]?: Set<string> };
 
 export function command<T, S>(target: Target<T>, name: string, descriptor: S): S {
-    if (target[commands] == undefined) {
+    if (target[commands] === undefined) {
         target[commands] = new Set<string>();
     }
 

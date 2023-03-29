@@ -47,18 +47,18 @@ export class Counter {
 }
 ```
 
-### 2. Use the `createReactiveInstanceOf` function in your Svelte component
+### 2. Use the `reactiveInstanceOf` function in your Svelte component
 
-In your Svelte component, import your class and the `createReactiveInstanceOf` function. Use the function to create a
+In your Svelte component, import your class and the `reactiveInstanceOf` function. Use the function to create a
 reactive instance of your class.
 
 ```svelte
 <!-- App.svelte -->
 <script lang="ts">
   import { Counter } from "./Counter";
-  import { createReactiveInstanceOf } from "svelte-reactive-classes";
+  import { reactiveInstanceOf } from "svelte-reactive-classes";
 
-  const count = createReactiveInstanceOf(Counter);
+  const count = reactiveInstanceOf(Counter);
 </script>
 ```
 
@@ -82,7 +82,7 @@ and call methods directly.
 
 A decorator to mark methods as "commands" in the CQS pattern. These methods will trigger reactivity when called.
 
-### `createReactiveInstanceOf(ClassConstructor)`
+### `reactiveInstanceOf(ClassConstructor)`
 
 Creates a reactive instance of the given class constructor. The instance will have reactive properties and can be used
 in Svelte components with the `$` syntax.
