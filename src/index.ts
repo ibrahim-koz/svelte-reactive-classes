@@ -33,13 +33,16 @@ export function createReactiveInstanceOf<T, S extends unknown[]>(
 
     const reactiveCommands = commandPairs.reduce((acc, [name, command]) => {
         return {...acc, [name]: reactiveCommandOf(command)};
-    }, store);
+    }, {});
 
-    return {
+    const reactiveInstance = {
         ...instance,
         ...reactiveCommands,
         subscribe: store.subscribe,
-    }
+    };
+
+    Object.setPrototypeOf(reactiveInstance, Object.getPrototypeOf(instance))
+    return reactiveInstance
 }
 
 
