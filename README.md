@@ -5,6 +5,16 @@ with encapsulation in your Svelte applications. The library provides an easy way
 stores on the fly, while removing the `update` and `set` functions to improve encapsulation. It also supports the CQS (
 Command Query Separation) pattern through the `@command` decorator.
 
+## Motivation
+
+As a backend developer with a solid background in Object-Oriented Programming (OOP) and software architecture, I found the way state management is handled in many frontend frameworks to be quite annoying. In OOP, it is essential that only a class should change its state, without exposing its internal data outside. This principle ensures better encapsulation and maintainability.
+
+Svelte provides a reactive store system that can be utilized to improve the state management in frontend applications. This inspired me to develop a solution that leverages Svelte's store values while maintaining the OOP principle of encapsulation.
+
+The implementation presented here allows you to mark specific methods as commands that trigger reactivity. This approach aligns well with the Command Query Separation (CQS) principle, where commands are responsible for causing side effects, such as state changes, and should not return any data.
+
+By combining the power of Svelte's reactive store system with the principles of OOP and CQS, this solution provides an elegant and maintainable approach to state management in frontend applications.
+
 ## Installation
 
 You can install `svelte-reactive-classes` using npm:
@@ -79,6 +89,16 @@ in Svelte components with the `$` syntax.
 
 - `ClassConstructor`: The class constructor function.
 - Returns: A reactive instance of the class.
+
+## Keywords
+
+-   Svelte
+-   Reactive store
+-   Object-Oriented Programming (OOP)
+-   Encapsulation
+-   Command Query Separation (CQS)
+-   State management
+-   Frontend architecture
 
 ## License
 
