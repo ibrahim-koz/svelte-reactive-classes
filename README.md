@@ -36,12 +36,12 @@ export class Counter {
     count = 0;
 
     @command
-    increment() {
+    increase() {
         this.count++;
     }
 
     @command
-    decrement() {
+    decrease() {
         this.count--;
     }
 }
@@ -71,8 +71,8 @@ and call methods directly.
 <!-- App.svelte -->
 <main>
   <h1>{$count.count}</h1>
-  <button on:click={() => count.increment()}>Increase</button>
-  <button on:click={() => count.decrement()}>Decrease</button>
+  <button on:click={() => count.increase()}>Increase</button>
+  <button on:click={() => count.decrease()}>Decrease</button>
 </main>
 ```
 
